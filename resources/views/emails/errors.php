@@ -11,8 +11,7 @@
 <div style="width: 600px; padding: 15px; margin: 0 auto; background-color: #333; color: #fff;">
     <h1>Welcome</h1>
     <p>hi, my name is <strong>Sergey</strong></p>
-    <div style="text-align: center;"><img width="300" height="300" src="https://esdi.ru/dist/images/kroha-antoha.jpg" alt=""></div>
-    <p><?php echo $data; ?></p>
+    <p><?php echo "Error: {$data}"; ?></p>
 </div>
 </body>
 </html>
