@@ -11,11 +11,6 @@
 <body>
 <div class="off-canvas position-left reveal-for-large" id="offCanvas" data-off-canvas>
 
-    <!-- Close button -->
-    <button class="close-button" aria-label="Close menu" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-    </button>
-
     <!-- Menu -->
     <ul class="vertical menu">
         <li><a href="#">Foundation</a></li>
@@ -29,9 +24,19 @@
 </div>
 
 <div class="off-canvas-content" data-off-canvas-content>
+    <div class="dashboard">
+        <div class="row expanded">
+            <div class="title-bar">
+                <div class="title-bar-left">
+                    <button class="menu-icon hide-for-large" type="button" data-open="offCanvas"></button>
+                    <span class="title-bar-title">{{  getenv('APP_NAME') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
     @yield('content')
 </div>
-<script style="/js/lib.js"></script>
-<script style="/js/main.js"></script>
+<script src="/js/lib.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

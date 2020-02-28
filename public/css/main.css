@@ -2,3 +2,11 @@
 @import "foundation.min.css";
 @import "motion-ui.min.css";
 @import "slick.css";
+
+body {
+    font-family: 'Oswald';
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald';
+}
+
