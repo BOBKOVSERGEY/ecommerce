@@ -9,19 +9,8 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<div class="off-canvas position-left reveal-for-large" id="offCanvas" data-off-canvas>
 
-    <!-- Menu -->
-    <ul class="vertical menu">
-        <li><a href="#">Foundation</a></li>
-        <li><a href="#">Dot</a></li>
-        <li><a href="#">ZURB</a></li>
-        <li><a href="#">Com</a></li>
-        <li><a href="#">Slash</a></li>
-        <li><a href="#">Sites</a></li>
-    </ul>
-
-</div>
+<?php echo $__env->make('includes.admin-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <div class="off-canvas-content" data-off-canvas-content>
     <div class="dashboard">
