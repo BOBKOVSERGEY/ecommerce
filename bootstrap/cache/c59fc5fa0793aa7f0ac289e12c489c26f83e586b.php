@@ -1,9 +1,9 @@
 <div class="off-canvas position-left reveal-for-large nav" id="offCanvas" data-off-canvas>
     <h3>Welcom Admin</h3>
-    <div>
+    <div class="admin__face">
         <img src="/images/admin.svg" alt="Admin">
     </div>
-    <p>Sergey B.</p>
+    <p class="admin__name">Sergey B.</p>
     <!-- Menu -->
     <ul class="vertical menu">
         <li><a href="/admin"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
