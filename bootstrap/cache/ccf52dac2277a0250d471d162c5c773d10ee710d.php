@@ -5,13 +5,10 @@
   <form action="/admin" method="post" enctype="multipart/form-data">
     <input type="text" name="product" value="testing product">
     <br>
-    <input type="file" name="file">
+    <input type="file" name="image">
     <br>
     <input type="submit" name="submit" value="Go">
   </form>
-
-  <?php echo e(\App\Classes\Request::all()); ?>
-
 
 <?php $__env->stopSection(); ?>
 

@@ -6,7 +6,12 @@ namespace App\Classes;
 
 class Request
 {
-    // return all request that we are interested in
+
+    /**
+     * return all request that we are interested in
+     * @param bool $is_array
+     * @return mixed
+     */
     public static function all($is_array = false)
     {
         $result = [];
@@ -18,7 +23,19 @@ class Request
 
         return json_decode(json_encode($result), $is_array);
     }
-    // get specific request type
+
+    /**
+     * get specific request type
+     * @param $key
+     * @return mixed
+     */
+    public static function get($key)
+    {
+        $data = static::all();
+
+        return $data->$key;
+
+    }
 
     // check request availability
 

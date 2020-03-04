@@ -16,6 +16,8 @@ class DashboardController extends BaseController
 
     public function get()
     {
-        var_dump(Request::all());
+        $request = Request::get('file');
+        //var_dump($request->post);
+        var_dump( $request->image->name);
     }
 }
