@@ -37,10 +37,36 @@ class Request
 
     }
 
-    // check request availability
+    /**
+     * check request availability
+     * @param $key
+     * @return bool
+     */
+    public static function has($key)
+    {
+        return (array_key_exists($key, static::all(true))) ? true : false;
+    }
 
-    // get request data
+    /**
+     * get request data
+     * @param $key
+     * @param $value
+     * @return string
+     */
+    public static function old($key, $value)
+    {
+        $data = static::all();
 
-    // refresh request
+       return isset($data->$key->$value) ? $data->$key->$value : '';
+    }
 
+    /**
+     * refresh request
+     */
+    public static function refresh()
+    {
+        $_POST = [];
+        $_GET = [];
+        $_FILES = [];
+    }
 }
