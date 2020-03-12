@@ -1,5 +1,5 @@
 <?php
-
+//setlocale(LC_TIME, 'Russian');
 // init session
 if (!isset($_SESSION)) session_start();
 
