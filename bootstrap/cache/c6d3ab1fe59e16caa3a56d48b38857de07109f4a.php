@@ -21,6 +21,24 @@
       </div>
     <?php endif; ?>
 
+    <?php if(isset($errors)): ?>
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <div class="callout alert" data-closable="slide-out-right">
+            <h5>This is an alert callout</h5>
+            <?php $__currentLoopData = $errors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $errorArray): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <?php $__currentLoopData = $errorArray; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <p><?php echo e($error); ?></p>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
+
     <div class="grid-x grid-padding-x">
       <div class="cell small-12 medium-6">
         <form action="/admin/product/categories" method="post">
@@ -51,9 +69,9 @@
             <tbody>
               <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                  <td><?php echo e($category->name); ?></td>
-                  <td><?php echo e($category->slug); ?></td>
-                  <td><?php echo e($category->created_at->toFormattedDateString()); ?></td>
+                  <td><?php echo e($category['name']); ?></td>
+                  <td><?php echo e($category['slug']); ?></td>
+                  <td><?php echo e($category['added']); ?></td>
                   <td width="100" class="text-right">
                     <a href="#"><i class="fas fa-edit"></i></a>
                     <a href="#"><i class="fas fa-times"></i></a>
@@ -62,6 +80,8 @@
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
           </table>
+          <?php echo $links; ?>
+
           <?php else: ?>
           <h3>You have not created any category</h3>
         <?php endif; ?>

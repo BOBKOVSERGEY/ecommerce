@@ -22,6 +22,24 @@
       </div>
     @endif
 
+    @if(isset($errors))
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <div class="callout alert" data-closable="slide-out-right">
+            <h5>This is an alert callout</h5>
+            @foreach($errors as $errorArray)
+              @foreach($errorArray as $error)
+                <p>{{ $error }}</p>
+              @endforeach
+            @endforeach
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    @endif
+
     <div class="grid-x grid-padding-x">
       <div class="cell small-12 medium-6">
         <form action="/admin/product/categories" method="post">
@@ -52,9 +70,9 @@
             <tbody>
               @foreach($categories as $category)
                 <tr>
-                  <td>{{ $category->name }}</td>
-                  <td>{{ $category->slug }}</td>
-                  <td>{{ $category->created_at->toFormattedDateString() }}</td>
+                  <td>{{ $category['name'] }}</td>
+                  <td>{{ $category['slug'] }}</td>
+                  <td>{{ $category['added'] }}</td>
                   <td width="100" class="text-right">
                     <a href="#"><i class="fas fa-edit"></i></a>
                     <a href="#"><i class="fas fa-times"></i></a>
@@ -63,6 +81,7 @@
               @endforeach
             </tbody>
           </table>
+          {!! $links !!}
           @else
           <h3>You have not created any category</h3>
         @endif

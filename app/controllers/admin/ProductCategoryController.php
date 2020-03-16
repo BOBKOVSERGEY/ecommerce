@@ -11,10 +11,26 @@ use App\Model\Category;
 
 class ProductCategoryController
 {
+    public $table_name = 'categories';
+    public $categories;
+    public $links;
+
+    public function __construct()
+    {
+        $total = Category::all()->count();
+        $object = new Category();
+
+        list($this->categories, $this->links) = paginate(10, $total, $this->table_name, $object);
+
+    }
+
+
     public function show()
     {
-        $categories = Category::all();
-       return view('admin/products/categories', compact('categories'));
+       return view('admin/products/categories', [
+           'categories' => $this->categories,
+           'links' => $this->links
+       ]);
     }
 
     public function store()
@@ -23,6 +39,22 @@ class ProductCategoryController
             $request = Request::get('post');
 
             if (CSRFToken::verifyCSRFToken($request->token)) {
+                $rules = [
+                    'name' => ['required' => true, 'minLength' => 3, 'string' => true, 'unique' => 'categories']
+                ];
+
+                $validate = new ValidateRequest();
+
+                $validate->abide($_POST, $rules);
+
+                if ($validate->hasError()) {
+                   $errors = $validate->getErrorMessages();
+                    return view('admin/products/categories', [
+                        'categories' => $this->categories,
+                        'links' => $this->links,
+                        'errors' => $errors
+                    ]);
+                }
                 // process form data
                 Category::create([
                     'name' => $request->name,
@@ -30,7 +62,15 @@ class ProductCategoryController
                 ]);
                 $categories = Category::all();
                 $message = 'Category Created';
-                return view('admin/products/categories', compact('categories', 'message'));
+                $total = Category::all()->count();
+                $object = new Category();
+                list($this->categories, $this->links) = paginate(10, $total, $this->table_name, $object);
+                return view('admin/products/categories', [
+                    'categories' => $this->categories,
+                    'links' => $this->links,
+                    'message' => $message
+                ]);
+
             }
 
             throw new \Exception('Token mismatch');
