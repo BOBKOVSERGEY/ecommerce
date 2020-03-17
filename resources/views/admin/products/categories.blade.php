@@ -1,5 +1,6 @@
 @extends('admin.layout.base')
 @section('title', 'Product Categories')
+@section('data-page-id', 'adminCategories')
 
 @section('content')
   <div class="category">
@@ -74,8 +75,25 @@
                   <td>{{ $category['slug'] }}</td>
                   <td>{{ $category['added'] }}</td>
                   <td width="100" class="text-right">
-                    <a href="#"><i class="fas fa-edit"></i></a>
+                    <a data-open="item-{{ $category['id'] }}"><i class="fas fa-edit"></i></a>
                     <a href="#"><i class="fas fa-times"></i></a>
+                    <div class="reveal" id="item-{{ $category['id'] }}" data-animation-in="scale-in-up" data-animation-out="spin-out" data-reveal  >
+                      <h1>Edit Category</h1>
+                      <div class="notification callout"></div>
+
+                          <form>
+                            <div class="input-group">
+                              <input type="text" id="item-name-{{ $category['id'] }}" class="input-group-field" name="name" value="{{ $category['name'] }}">
+                            </div>
+                            <div class="text-center">
+                              <input type="submit" class="button update-category" id="{{ $category['id'] }}" data-token="{{ \App\Classes\CSRFToken::_token() }}" value="Update">
+                            </div>
+                          </form>
+
+                      <button class="close-button" data-close aria-label="Close modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               @endforeach

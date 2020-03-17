@@ -1,4 +1,5 @@
 <?php $__env->startSection('title', 'Product Categories'); ?>
+<?php $__env->startSection('data-page-id', 'adminCategories'); ?>
 
 <?php $__env->startSection('content'); ?>
   <div class="category">
@@ -73,8 +74,25 @@
                   <td><?php echo e($category['slug']); ?></td>
                   <td><?php echo e($category['added']); ?></td>
                   <td width="100" class="text-right">
-                    <a href="#"><i class="fas fa-edit"></i></a>
+                    <a data-open="item-<?php echo e($category['id']); ?>"><i class="fas fa-edit"></i></a>
                     <a href="#"><i class="fas fa-times"></i></a>
+                    <div class="reveal" id="item-<?php echo e($category['id']); ?>" data-animation-in="scale-in-up" data-animation-out="spin-out" data-reveal  >
+                      <h1>Edit Category</h1>
+                      <div class="notification callout"></div>
+
+                          <form>
+                            <div class="input-group">
+                              <input type="text" id="item-name-<?php echo e($category['id']); ?>" class="input-group-field" name="name" value="<?php echo e($category['name']); ?>">
+                            </div>
+                            <div class="text-center">
+                              <input type="submit" class="button update-category" id="<?php echo e($category['id']); ?>" data-token="<?php echo e(\App\Classes\CSRFToken::_token()); ?>" value="Update">
+                            </div>
+                          </form>
+
+                      <button class="close-button" data-close aria-label="Close modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

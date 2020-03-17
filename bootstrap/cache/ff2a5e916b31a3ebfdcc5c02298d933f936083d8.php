@@ -8,7 +8,7 @@
     <title>Admin Panel - <?php echo $__env->yieldContent('title'); ?></title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
+<body data-page-id="<?php echo $__env->yieldContent('data-page-id'); ?>">
 
 <?php echo $__env->make('includes.admin-sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
@@ -26,6 +26,8 @@
     <?php echo $__env->yieldContent('content'); ?>
 </div>
 <script src="/js/lib.js"></script>
+
 <script src="/js/main.js"></script>
+<script src="/js/admin/update.js"></script>
 </body>
 </html><?php /**PATH C:\OSPanel\domains\ecommerce\resources\views/admin/layout/base.blade.php ENDPATH**/ ?>

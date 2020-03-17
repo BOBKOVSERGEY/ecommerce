@@ -8,7 +8,7 @@
     <title>Admin Panel - @yield('title')</title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
+<body data-page-id="@yield('data-page-id')">
 
 @include('includes.admin-sidebar')
 
@@ -26,6 +26,8 @@
     @yield('content')
 </div>
 <script src="/js/lib.js"></script>
+
 <script src="/js/main.js"></script>
+<script src="/js/admin/update.js"></script>
 </body>
 </html>
